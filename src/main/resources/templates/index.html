@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org.thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Hello! Everyone should be able to see this.</h1>
+    <h2 sec:authorize="hasAuthority('ADMIN')">This is viewable by ADMIN users</h2>
+    <h2 sec:authorize="hasAuthority('RANDOMUSER')">This is viewable by ORDINARY users</h2>
+    <h2>This is viewable by everyone</h2>
+    <h2 sec:authorize="isAuthenticated()">This is viewable by logged in users</h2>
+    <h2 sec:authorize="isAnonymous()">This is viewable by unauthenticated users</h2>
+    <h2 sec:authentication="name"></h2>
+    <div sec:authorize="hasAuthority('ADMIN')" th:insert="generalfragment::admin"></div>
+
+
+</body>
+</html>
